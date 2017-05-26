@@ -16,9 +16,10 @@ class App extends Component {
       content: {
         backgroundColor: '#fff',
         flex: 1,
-        maxWidth: 900,
+        maxWidth: 768,
         paddingLeft: 16,
         paddingRight: 16,
+        boxSizing: 'border-box'
       }
     }
 
