@@ -42,7 +42,10 @@ class Gallery extends React.Component {
 
     return (
       <div style={styles.container}>
-        { imageUrls.map(imageUrl => (<Image url={imageUrl} />)) }
+        { imageUrls.map((imageUrl, i) => {
+          const onClick = () => console.log(imageUrl);
+          return <Image url={imageUrl} onClick={onClick} key={i} />
+        }) }
       </div>
     );
   }
