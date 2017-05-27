@@ -9,21 +9,44 @@ class App extends Component {
     super(props);
 
     this.state = {
-      isDialogOpen: false,
-      imageUrlInDialog: null,
+      dialogIsOpen: false,
+      dialogImage: null,
+      images: [],
     };
   }
 
-  openDialogWithImage = (url) => {
+  componentDidMount() {
+    const subreddit = 'kitten';
+
+    fetch(`https://www.reddit.com/r/${subreddit}/new.json?raw_json=1`)
+      .then(response => response.json())
+      .then(response => {
+        return response.data.children.map(child => {
+          // get the first image
+          const image = child.data.preview.images[0];
+
+          return image.resolutions
+            .filter(resolution => resolution.width === 216)
+            .map(resolution => resolution.url)[0];
+        });
+      })
+      .then(images => {
+        this.setState({
+          images,
+        });
+      })
+  }
+
+  openDialog = (url) => {
     this.setState({
-      isDialogOpen: true,
-      imageUrlInDialog: url,
+      dialogIsOpen: true,
+      dialogImage: url,
     });
   }
 
   closeDialog = () => {
     this.setState({
-      isDialogOpen: false 
+      dialogIsOpen: false
     });
   }
 
@@ -54,13 +77,13 @@ class App extends Component {
       <div style={styles.container}>
         <div style={styles.content}>
           <Header title="Meowstagram" />
-          <Gallery onClick={this.openDialogWithImage} />
-          <Dialog 
-            isOpen={this.state.isDialogOpen}
+          <Gallery images={this.state.images} onClick={this.openDialog} />
+          <Dialog
+            isOpen={this.state.dialogIsOpen}
             onClose={this.closeDialog}
             style={styles.dialog}
           >
-            <Image src={this.state.imageUrlInDialog} />
+            <Image src={this.state.dialogImage} />
           </Dialog>
         </div>
       </div>
