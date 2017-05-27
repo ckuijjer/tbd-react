@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Image from './Image';
 
 class Gallery extends React.Component {

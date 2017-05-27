@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 
-import Header from './Header';
-import Gallery from './Gallery';
+import Header from './Header.SC';
+import Gallery from './Gallery.SC';
 import Dialog from './Dialog';
 import Image from './Image';
 
