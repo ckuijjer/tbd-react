@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Image = ({ url, onClick = () => {} }) => {
+const Image = ({ src, onClick = () => {} }) => {
   const styles = {
     paddingBottom: '100%',
-    background: `url(${url}) center / cover`
+    background: `url(${src}) center / cover`
   };
 
   return (

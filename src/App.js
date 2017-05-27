@@ -54,7 +54,7 @@ class App extends Component {
             onClose={this.closeDialog}
           >
             <div style={{ width: 736 }}>
-               <Image url={this.state.imageUrlInDialog} />
+               <Image src={this.state.imageUrlInDialog} />
             </div>
           </Dialog>
         </div>
