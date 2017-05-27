@@ -22,13 +22,15 @@ class App extends Component {
   }
 
   closeDialog = () => {
-    this.setState({ isDialogOpen: false });
+    this.setState({
+      isDialogOpen: false 
+    });
   }
 
   render() {
     const styles = {
       container: {
-        backgroundColor: '#fafafa',
+        backgroundColor: '#fbfbfb',
         minHeight: '100vh',
         display: 'flex',
         justifyContent: 'center',
@@ -37,8 +39,7 @@ class App extends Component {
         backgroundColor: '#fff',
         flex: 1,
         maxWidth: 768,
-        paddingLeft: 16,
-        paddingRight: 16,
+        padding: 16,
         boxSizing: 'border-box'
       }
     }

@@ -5,7 +5,8 @@ class Header extends React.Component {
     const style = {
       fontSize: 40,
       fontWeight: 'bold',
-      lineHeight: '96px',
+      lineHeight: '72px',
+      color: '#333',
     }
 
     return (
