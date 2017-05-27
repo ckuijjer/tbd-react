@@ -15,27 +15,25 @@ class App extends Component {
       dialogImage: null,
       images: [],
     };
+
+    this.getImages();
   }
 
-  componentDidMount() {
+  async getImages() {
     const subreddit = 'kitty';
 
-    fetch(`https://www.reddit.com/r/${subreddit}/hot.json?raw_json=1`)
-      .then(response => response.json())
-      .then(response => {
-        return response.data.children.map(child => {
-          const resolutions = _.get(child, 'data.preview.images[0].resolutions', []);
+    const response = await fetch(`https://www.reddit.com/r/${subreddit}/hot.json?raw_json=1`);
+    const json = await response.json();
 
-          return resolutions
-            .filter(resolution => resolution.width === 216)
-            .map(resolution => resolution.url)[0];
-        });
-      })
-      .then(images => {
-        this.setState({
-          images,
-        });
-      })
+    const images = json.data.children.map(child => {
+      const resolutions = _.get(child, 'data.preview.images[0].resolutions', []);
+
+      return resolutions
+        .filter(resolution => resolution.width === 216)
+        .map(resolution => resolution.url)[0];
+    });
+
+    this.setState({ images });
   }
 
   openDialog = (url) => {
