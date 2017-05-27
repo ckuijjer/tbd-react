@@ -22,14 +22,14 @@ class App extends Component {
   async getImages() {
     const subreddit = 'kitty';
 
-    const response = await fetch(`https://www.reddit.com/r/${subreddit}/hot.json?raw_json=1`);
+    const response = await fetch(`https://www.reddit.com/r/${subreddit}/hot.json?raw_json=1&limit=24`);
     const json = await response.json();
 
     const images = json.data.children.map(child => {
       const resolutions = _.get(child, 'data.preview.images[0].resolutions', []);
 
       return resolutions
-        .filter(resolution => resolution.width === 216)
+        .filter(resolution => resolution.width === 320)
         .map(resolution => resolution.url)[0];
     });
 
