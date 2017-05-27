@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Dialog = ({ isOpen, children, onClose = () => {} }) => {
+const Dialog = ({ isOpen, children, onClose = () => {}, style }) => {
   if (!isOpen) return null;
 
   const styles = {
-    container: {
+    overlay: {
       backgroundColor: 'rgba(255,255,255,0.8)',
       position: 'fixed',
       top: 0,
@@ -18,8 +18,10 @@ const Dialog = ({ isOpen, children, onClose = () => {} }) => {
   };
 
   return (
-    <div style={styles.container} onClick={onClose}>
-      { children }
+    <div style={styles.overlay} onClick={onClose}>
+      <div style={style}>
+        { children }
+      </div>
     </div>
   )
 };

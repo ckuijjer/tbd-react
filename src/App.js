@@ -41,7 +41,10 @@ class App extends Component {
         maxWidth: 768,
         padding: 16,
         boxSizing: 'border-box'
-      }
+      },
+      dialog: {
+        width: 736,
+      },
     }
 
     return (
@@ -52,10 +55,9 @@ class App extends Component {
           <Dialog 
             isOpen={this.state.isDialogOpen}
             onClose={this.closeDialog}
+            style={styles.dialog}
           >
-            <div style={{ width: 736 }}>
-               <Image src={this.state.imageUrlInDialog} />
-            </div>
+            <Image src={this.state.imageUrlInDialog} />
           </Dialog>
         </div>
       </div>
