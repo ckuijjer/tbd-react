@@ -43,7 +43,10 @@ class App extends Component {
         boxSizing: 'border-box'
       },
       dialog: {
-        width: 736,
+        flex: 1,
+        maxWidth: 768,
+        padding: 16,
+        boxSizing: 'border-box'
       },
     }
 
