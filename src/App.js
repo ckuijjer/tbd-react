@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
+
 import Header from './Header';
 import Gallery from './Gallery';
 import Dialog from './Dialog';
@@ -16,16 +18,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const subreddit = 'kitten';
+    const subreddit = 'kitty';
 
-    fetch(`https://www.reddit.com/r/${subreddit}/new.json?raw_json=1`)
+    fetch(`https://www.reddit.com/r/${subreddit}/hot.json?raw_json=1`)
       .then(response => response.json())
       .then(response => {
         return response.data.children.map(child => {
-          // get the first image
-          const image = child.data.preview.images[0];
+          const resolutions = _.get(child, 'data.preview.images[0].resolutions', []);
 
-          return image.resolutions
+          return resolutions
             .filter(resolution => resolution.width === 216)
             .map(resolution => resolution.url)[0];
         });
