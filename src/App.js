@@ -1,8 +1,30 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Gallery from './Gallery';
+import Dialog from './Dialog';
+import Image from './Image';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isDialogOpen: false,
+      imageUrlInDialog: null,
+    };
+  }
+
+  openDialogWithImage = (url) => {
+    this.setState({
+      isDialogOpen: true,
+      imageUrlInDialog: url,
+    });
+  }
+
+  closeDialog = () => {
+    this.setState({ isDialogOpen: false });
+  }
+
   render() {
     const styles = {
       container: {
@@ -25,7 +47,15 @@ class App extends Component {
       <div style={styles.container}>
         <div style={styles.content}>
           <Header title="Meowstagram" />
-          <Gallery />
+          <Gallery onClick={this.openDialogWithImage} />
+          <Dialog 
+            isOpen={this.state.isDialogOpen}
+            onClose={this.closeDialog}
+          >
+            <div style={{ width: 736 }}>
+               <Image url={this.state.imageUrlInDialog} />
+            </div>
+          </Dialog>
         </div>
       </div>
     );
