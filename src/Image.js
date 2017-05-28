@@ -1,13 +1,13 @@
 import React from 'react';
 
 const Image = ({ src, onClick = () => {} }) => {
-  const styles = {
+  const style = {
     paddingBottom: '100%', // percentage is based on the width
     background: `url(${src}) center / cover`
   };
 
   return (
-    <div style={styles} onClick={onClick} />
+    <div style={style} onClick={onClick} />
   );
 }
 
