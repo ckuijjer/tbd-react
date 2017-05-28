@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   getMoreImages = async () => {
-    const subreddit = 'kitty';
+    let subreddit = 'kittens';
 
     const params = {
       raw_json: 1,
@@ -45,6 +45,7 @@ class App extends Component {
         .filter(resolution => resolution.width === 320)
         .map(resolution => resolution.url)[0]
     }))
+    .filter(item => item.url)
   );
 
   openDialog = (item) => {
