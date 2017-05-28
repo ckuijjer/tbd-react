@@ -62,7 +62,7 @@ class Gallery extends Component {
     return (
       <div style={styles.container}>
         <div style={styles.content}>
-          <Header title="Meowstagram" />
+          <Header title="/r/kitten" />
           <ImageGrid images={images} onClick={this.openDialog} />
           <Dialog
             isOpen={this.state.dialogIsOpen}
