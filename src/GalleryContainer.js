@@ -4,8 +4,6 @@ import queryString from 'query-string';
 
 import Gallery from './Gallery';
 
-const SUBREDDIT = 'kittens';
-
 class GalleryContainer extends Component {
   constructor(props) {
     super(props);
@@ -18,13 +16,15 @@ class GalleryContainer extends Component {
   }
 
   handleLoadMore = async () => {
+    const subreddit = this.props.match.params.subreddit;
+
     const params = {
       raw_json: 1,
       limit: 24,
       after: this.state.images.length ? this.state.images[this.state.images.length - 1].id : undefined
     };
 
-    const response = await fetch(`https://www.reddit.com/r/${SUBREDDIT}/hot.json?${queryString.stringify(params)}`);
+    const response = await fetch(`https://www.reddit.com/r/${subreddit}/hot.json?${queryString.stringify(params)}`);
     const json = await response.json();
 
     const images = this.transformAPIresult(json);
@@ -48,6 +48,7 @@ class GalleryContainer extends Component {
 
     return (
       <Gallery
+        title={this.props.match.params.subreddit}
         images={images}
         onLoadMoreClick={this.handleLoadMore}
       />

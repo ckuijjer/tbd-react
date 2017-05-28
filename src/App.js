@@ -14,7 +14,7 @@ class App extends React.Component {
       <Router>
         <Switch>
           <Route path="/:subreddit" component={GalleryContainer} />
-          <Redirect from="/" to="/kitten" />
+          <Redirect from="/" to="/kittens" />
         </Switch>
       </Router>
     )

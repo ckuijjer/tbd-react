@@ -59,10 +59,12 @@ class Gallery extends Component {
       }
     }
 
+    const title = `/r/${this.props.title}`;
+
     return (
       <div style={styles.container}>
         <div style={styles.content}>
-          <Header title="/r/kitten" />
+          <Header title={title} />
           <ImageGrid images={images} onClick={this.openDialog} />
           <Dialog
             isOpen={this.state.dialogIsOpen}
