@@ -43,9 +43,12 @@ class GalleryContainer extends Component {
   );
 
   render() {
+    // Make the Gallery always render full rows
+    const images = this.state.images.slice(0, this.state.images.length - (this.state.images.length % 3)) 
+
     return (
       <Gallery
-        images={this.state.images}
+        images={images}
         onLoadMoreClick={this.handleLoadMore}
       />
     );
