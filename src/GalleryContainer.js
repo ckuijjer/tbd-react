@@ -15,6 +15,21 @@ class GalleryContainer extends Component {
     this.handleLoadMore();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.subreddit !== nextProps.match.params.subreddit) {
+      this.setState({
+        images: [],
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    // Can't be done in componentWillReceiveProps as handleLoadMore depends on this.props
+    if (this.props.match.params.subreddit !== prevProps.match.params.subreddit) {
+      this.handleLoadMore();
+    }
+  }  
+
   handleLoadMore = async () => {
     const subreddit = this.props.match.params.subreddit;
 

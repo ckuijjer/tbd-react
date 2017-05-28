@@ -13,11 +13,13 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <AppBar />
-        <Switch>
-          <Route path="/:subreddit" component={GalleryContainer} />
-          <Redirect from="/" to="/kittens" />
-        </Switch>
+        <div>
+          <AppBar />        
+          <Switch>
+            <Route path="/:subreddit" component={GalleryContainer} />
+            <Redirect from="/" to="/kittens" />
+          </Switch>
+        </div>
       </Router>
     )
   }
