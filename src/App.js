@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import Gallery from './Gallery';
+import GalleryContainer from './GalleryContainer';
 
 class App extends Component {
   render() {
-    return <Gallery />
+    return <GalleryContainer />
   }
 }
 
