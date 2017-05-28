@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import queryString from 'query-string';
 
 import Header from './Header';
 import Gallery from './Gallery';
 import Dialog from './Dialog';
 import Image from './Image';
+import Button from './Button';
 
 class App extends Component {
   constructor(props) {
@@ -16,30 +18,39 @@ class App extends Component {
       images: [],
     };
 
-    this.getImages();
+    this.getMoreImages();
   }
 
-  async getImages() {
+   getMoreImages = async () => {
     const subreddit = 'kitty';
 
-    const response = await fetch(`https://www.reddit.com/r/${subreddit}/hot.json?raw_json=1&limit=24`);
+    const params = {
+      raw_json: 1,
+      limit: 24,
+      after: this.state.images.length ? this.state.images[this.state.images.length - 1].id : undefined
+    };
+
+    const response = await fetch(`https://www.reddit.com/r/${subreddit}/hot.json?${queryString.stringify(params)}`);
     const json = await response.json();
 
-    const images = json.data.children.map(child => {
-      const resolutions = _.get(child, 'data.preview.images[0].resolutions', []);
+    const images = this.transformAPIresult(json);
 
-      return resolutions
-        .filter(resolution => resolution.width === 320)
-        .map(resolution => resolution.url)[0];
-    });
-
-    this.setState({ images });
+    this.setState({ images: [ ...this.state.images, ...images ] });
   }
 
-  openDialog = (url) => {
+  transformAPIresult = (json) => (
+    json.data.children.map(item => ({
+      id: item.data.name,
+      url: _.get(item, 'data.preview.images[0].resolutions', [])
+        .filter(resolution => resolution.width === 320)
+        .map(resolution => resolution.url)[0]
+    }))
+  );
+
+  openDialog = (item) => {
     this.setState({
       dialogIsOpen: true,
-      dialogImage: url,
+      dialogImage: item.url,
     });
   }
 
@@ -70,6 +81,11 @@ class App extends Component {
         padding: 16,
         boxSizing: 'border-box'
       },
+      buttonContainer: {
+        marginTop: 16,
+        display: 'flex',
+        justifyContent: 'center',
+      }
     }
 
     return (
@@ -84,6 +100,9 @@ class App extends Component {
           >
             <Image src={this.state.dialogImage} />
           </Dialog>
+          <div style={styles.buttonContainer}>
+            <Button onClick={this.getMoreImages}>Load more</Button>
+          </div>
         </div>
       </div>
     );
