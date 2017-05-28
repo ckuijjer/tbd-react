@@ -11,8 +11,8 @@ const GalleryContainer = styled.div`
 const Gallery = ({ images = [], onClick = () => {} }) => (
 <GalleryContainer>
     {
-      images.map((src, i) => (
-        <Image src={src} onClick={() => onClick(src)} key={i} />
+      images.map((src) => (
+        <Image src={src} onClick={() => onClick(src)} />
       ))
     }
   </GalleryContainer>

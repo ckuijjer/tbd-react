@@ -4,8 +4,8 @@ import Image from './Image';
 const Gallery = ({ images = [], onClick = () => {} }) => (
   <div style={style}>
     {
-      images.map((src, i) => (
-        <Image src={src} onClick={() => onClick(src)} key={i} />
+      images.map((src) => (
+        <Image src={src} onClick={() => onClick(src)} />
       ))
     }
   </div>
