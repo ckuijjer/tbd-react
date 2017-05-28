@@ -16,7 +16,7 @@ class ImageGrid extends React.Component {
     return (
       <div style={styles.container}>
         { this.props.images.map((image) => {
-          return <Image src={image.url} onClick={() => onClick(image)} />
+          return <Image src={image.url} onClick={() => onClick(image)} key={image.id} />
         }) }
       </div>
     );
