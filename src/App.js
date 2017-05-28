@@ -21,7 +21,7 @@ class App extends Component {
     this.getMoreImages();
   }
 
-   getMoreImages = async () => {
+  getMoreImages = async () => {
     const subreddit = 'kitty';
 
     const params = {
@@ -35,7 +35,7 @@ class App extends Component {
 
     const images = this.transformAPIresult(json);
 
-    this.setState({ images: [ ...this.state.images, ...images ] });
+    this.setState({ images: [...this.state.images, ...images] });
   }
 
   transformAPIresult = (json) => (
