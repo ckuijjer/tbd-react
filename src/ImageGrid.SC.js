@@ -2,20 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 import Image from './Image.SC';
 
-const GalleryContainer = styled.div`
+const ImageGridWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
 `;
 
-const Gallery = ({ images = [], onClick = () => {} }) => (
-<GalleryContainer>
+const ImageGrid = ({ images = [], onClick = () => {} }) => (
+  <ImageGridWrapper>
     {
       images.map((src) => (
         <Image src={src} onClick={() => onClick(src)} />
       ))
     }
-  </GalleryContainer>
+  </ImageGridWrapper>
 );
 
-export default Gallery;
+export default ImageGrid;

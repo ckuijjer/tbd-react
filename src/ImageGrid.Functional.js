@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from './Image';
 
-const Gallery = ({ images = [], onClick = () => {} }) => (
+const ImageGrid = ({ images = [], onClick = () => {} }) => (
   <div style={style}>
     {
       images.map((src) => (
@@ -17,4 +17,4 @@ const style = {
   gridGap: 16,
 };
 
-export default Gallery;
+export default ImageGrid;
