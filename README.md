@@ -23,5 +23,11 @@ https://runkit.com/ckuijjer/kitten-thumbnails
 ### The endpoint to get kitten thumbnails
 https://ckuijjer.runkit.io/kitten-thumbnails/branches/master
 
+### The endpoint to get kitten thumbnails and ids
+https://runkit.com/ckuijjer/kitten-thumbnails-and-id
+
+### The endpoint to get kitten thumbnails and ids
+https://ckuijjer.runkit.io/kitten-thumbnails-and-id/branches/master
+
 ### The /r/kitten JSON api endpoint used
 https://www.reddit.com/r/kitten/hot.json?raw_json=1&limit=24
