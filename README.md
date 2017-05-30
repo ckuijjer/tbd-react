@@ -14,17 +14,14 @@ A simple image gallery
 
 ## Notes
 
-An example /r/kitten thumbnail 
+### An example /r/kitten thumbnail 
 https://i.redditmedia.com/L7FHXRkQWjjGz9pN3ONFtUmnujnhVUkz-i4LVgy70EE.jpg?fit=crop&crop=faces%2Centropy&arh=2&w=320&s=2a83bc67d486cee2919553a545f94dd4
 
-The /r/kitten JSON api endpoint used
+### The /r/kitten JSON api endpoint used
 https://www.reddit.com/r/kitten/hot.json?raw_json=1&limit=24
 
-The runkit to get kitten thumbnails
+### The runkit to get kitten thumbnails
 https://runkit.com/ckuijjer/kitten-thumbnails
 
-the endpoint to get kitten thumbnails
+### The endpoint to get kitten thumbnails
 https://ckuijjer.runkit.io/kitten-thumbnails/branches/master
-
-### 
-
