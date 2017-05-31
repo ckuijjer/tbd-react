@@ -31,3 +31,57 @@ https://ckuijjer.runkit.io/kitten-thumbnails-and-id/branches/master
 
 ### The /r/kitten JSON api endpoint used
 https://www.reddit.com/r/kitten/hot.json?raw_json=1&limit=24
+
+## Code snippets
+
+App styling
+```
+const styles = {
+  container: {
+    backgroundColor: '#eee',
+    display: 'flex',
+    justifyContent: 'center',
+    minHeight: '100vh',
+  },
+  content: {
+    backgroundColor: '#fff',
+    flex: 1,
+    maxWidth: 768,
+    padding: 16,
+    boxSizing: 'border-box',
+  },
+}
+```
+
+ImageGrid styling
+```
+const style = {
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr 1fr',
+  gridGap: 16,
+}
+
+```
+
+FullScreen image styling
+```
+const styles = {
+  container: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  content: {
+    flex: 1,
+    maxWidth: 768,
+    padding: 16,
+    boxSizing: 'border-box',
+  },
+};
+```
