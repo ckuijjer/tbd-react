@@ -1,12 +1,6 @@
 import React from 'react';
 
 class Dialog extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.onEscape = this.onEscape.bind(this);
-  }
-
   componentDidMount() {
     document.addEventListener('keydown', this.onEscape);
   }
